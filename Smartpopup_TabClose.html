@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Pop-up Promo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        /* Background Overlay */
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        /* Pop-up Box */
+        .popup-box {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #fff;
+            padding: 20px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            z-index: 1000;
+        }
+
+        /* Close Button */
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        /* Button Style */
+        .popup-button {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: #28a745;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .popup-button:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+<body>
+
+      <!-- Smart Pop-up -->
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup-box">
+            <span class="close-btn" id="closePopup">×</span>
+            <h2>🎉 Dapatkan Bonus Eksklusif!</h2>
+            <p>Gabung sekarang dan dapatkan **diskon 50%** untuk paket premium SmartBioLink.</p>
+            <a href="#" class="popup-button">Dapatkan Sekarang</a>
+        </div>
+    </div>
+
+    <script>
+        // Tampilkan pop-up setelah 5 detik
+        setTimeout(function() {
+            document.getElementById("popupOverlay").style.display = "block";
+        }, 6000);
+
+        // Tutup pop-up saat tombol close diklik
+        document.getElementById("closePopup").addEventListener("click", function() {
+            document.getElementById("popupOverlay").style.display = "none";
+        });
+
+        // Pop-up muncul saat user ingin keluar (Exit Intent)
+        document.addEventListener("mouseleave", function(event) {
+            if (event.clientY < 10) {
+                document.getElementById("popupOverlay").style.display = "block";
+            }
+        });
+    </script>
+
+</body>
+</html>
