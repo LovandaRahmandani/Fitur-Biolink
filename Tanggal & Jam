@@ -1,0 +1,6 @@
+ <a href="https://time.is/Indonesia" id="time_is_link" rel="nofollow" style="font-size:20px"></a>
+<span id="Indonesia_z41c" style="font-size:15px"></span>
+<script src="//widget.time.is/id.js"></script>
+<script>
+time_is_widget.init({Indonesia_z41c:{template:"DATE<br>TIME", time_format:"12hours:minutes:secondsAMPM", date_format:"dayname, dnum monthname year"}});
+</script>
