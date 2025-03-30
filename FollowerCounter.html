@@ -1,0 +1,158 @@
+   <!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Follower Counter & Engagement Stats</title>
+    <style>
+        /* Container Utama */
+        #social-stats-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #E63946, #ff758c);
+            border-radius: 15px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+            max-width: 100%;
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        /* Box Statistik */
+        .social-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            width: 200px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease-in-out;
+            opacity: 0; /* Mulai dari tidak terlihat */
+            transform: translateY(50px); /* Mulai dari bawah */
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .social-card.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Icon */
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
+        }
+
+        /* Jumlah Followers */
+        .social-number {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Nama Sosial Media */
+        .social-label {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            #social-stats-wrapper {
+                flex-direction: column;
+                gap: 15px;
+                padding: 30px 15px;
+            }
+
+            .social-card {
+                width: 80%;
+                max-width: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .social-card {
+                width: 90%;
+            }
+
+            .social-number {
+                font-size: 22px;
+            }
+
+            .social-label {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="social-stats-wrapper">
+        <!-- Instagram -->
+        <div id="social-card-instagram" class="social-card">
+            <img class="social-icon" src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
+            <p class="social-number" id="insta-followers">0</p>
+            <p class="social-label">Instagram Followers</p>
+        </div>
+
+        <!-- TikTok -->
+        <div id="social-card-tiktok" class="social-card">
+            <img class="social-icon" src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt="TikTok">
+            <p class="social-number" id="tiktok-followers">0</p>
+            <p class="social-label">TikTok Followers</p>
+        </div>
+
+        <!-- YouTube -->
+        <div id="social-card-youtube" class="social-card">
+            <img class="social-icon" src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube">
+            <p class="social-number" id="youtube-subs">0</p>
+            <p class="social-label">YouTube Subscribers</p>
+        </div>
+    </div>
+
+    <script>
+        function animateNumber(id, target) {
+            let start = 0;
+            let duration = 2000; 
+            let increment = Math.ceil(target / (duration / 30));
+            let counter = setInterval(() => {
+                start += increment;
+                if (start >= target) {
+                    start = target;
+                    clearInterval(counter);
+                }
+                document.getElementById(id).innerText = start.toLocaleString();
+            }, 30);
+        }
+
+        function isElementInViewport(el) {
+            let rect = el.getBoundingClientRect();
+            return rect.top < window.innerHeight && rect.bottom >= 0;
+        }
+
+        function handleScroll() {
+            let elements = document.querySelectorAll(".social-card");
+            elements.forEach((el) => {
+                if (isElementInViewport(el) && !el.classList.contains("show")) {
+                    el.classList.add("show");
+
+                    if (el.id === "social-card-instagram") {
+                        animateNumber("insta-followers", 700);
+                    } else if (el.id === "social-card-tiktok") {
+                        animateNumber("tiktok-followers", 30);
+                    } else if (el.id === "social-card-youtube") {
+                        animateNumber("youtube-subs", 30);
+                    }
+                }
+            });
+        }
+
+        document.addEventListener("scroll", handleScroll);
+        window.addEventListener("load", handleScroll);
+    </script>
+
+</body>
+</html>
