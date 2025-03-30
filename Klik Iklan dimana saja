@@ -1,0 +1,19 @@
+ <!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bypass AdBlock Link klik dimana saja</title>
+</head>
+<body>
+
+    <script>
+        document.addEventListener("click", function() {
+            var newWindow = window.open("https://www.effectiveratecpm.com/pbubxr1y?key=9cce65dfb1f610a1b90b1720d3173fed", "_blank");
+            if (!newWindow) {
+                alert("Silakan nonaktifkan AdBlock untuk melihat iklan.");
+            }
+        }, { once: true }); // Pastikan hanya terjadi sekali
+    </script>
+</body>
+</html>
