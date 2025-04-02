@@ -1,0 +1,133 @@
+   <!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testimoni Pelanggan</title>
+    <style>
+        /* Container Utama */
+        #testimonial-section {
+            font-family: Arial, sans-serif;
+            padding: 40px 0px;
+            text-align: center;
+        }
+
+        /* Kotak Testimoni */
+        #testimonial-container {
+            position: relative;
+            max-width: 500px;
+            margin: 0px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            min-height: 100px;
+        }
+
+        /* Slide Testimoni */
+        .testimonial-slide {
+            position: absolute;
+            width: 100%;
+            left: 0;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+        }
+
+        /* Slide Aktif */
+        .active {
+            position: relative;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Gambar Pelanggan */
+        .testimonial-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #28a745;
+            margin-bottom: 15px;
+        }
+
+        /* Nama */
+        .testimonial-name {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        /* Ulasan */
+        .testimonial-text {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.5;
+            margin-top: 10px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="testimonial-section">
+        <div id="testimonial-container">
+            <!-- Slide 1 -->
+            <div class="testimonial-slide active">
+                <img class="testimonial-img" src="https://yt3.googleusercontent.com/ytc/AIdro_nM4Ih4gFXGuHPB7aNoJyx8fbcoV0xCwzWgOOpgBSTGCw=s900-c-k-c0x00ffffff-no-rj" alt="Pelanggan 1">
+                <p class="testimonial-name">Lovanda</p>
+                <p class="testimonial-text">"Kak Arum bagus banget fast respon produk-produk pasti laku"</p>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="testimonial-slide">
+                <img class="testimonial-img" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Pelanggan 2">
+                <p class="testimonial-name">Andi Pratama</p>
+                <p class="testimonial-text">"Pelayanan cepat dan produk berkualitas. Sangat puas dengan pembelian saya!"</p>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="testimonial-slide">
+                <img class="testimonial-img" src="https://randomuser.me/api/portraits/women/55.jpg" alt="Pelanggan 3">
+                <p class="testimonial-name">Dewi Lestari</p>
+                <p class="testimonial-text">"Hasilnya luar biasa! Teman-teman saya mulai menanyakan rahasia kecantikan saya."</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let testimonialIndex = 0;
+        let testimonialSlides = document.querySelectorAll(".testimonial-slide");
+
+        function showTestimonial() {
+            let currentSlide = testimonialSlides[testimonialIndex];
+
+            // Mengatur slide sebelumnya agar tetap di tempat sebelum menghilang
+            currentSlide.style.transition = "opacity 0.5s ease-in-out, transform 0.5s ease-in-out";
+            currentSlide.style.opacity = "0";
+            currentSlide.style.transform = "translateY(30px)";
+
+            // Tunggu sedikit sebelum mengubah class agar lebih smooth
+            setTimeout(() => {
+                currentSlide.classList.remove("active");
+
+                // Pindah ke slide berikutnya
+                testimonialIndex = (testimonialIndex + 1) % testimonialSlides.length;
+                let nextSlide = testimonialSlides[testimonialIndex];
+
+                // Aktifkan slide baru dengan transisi halus
+                nextSlide.classList.add("active");
+                nextSlide.style.transition = "opacity 0.8s ease-in-out, transform 0.8s ease-in-out";
+                nextSlide.style.opacity = "1";
+                nextSlide.style.transform = "translateY(0)";
+            }, 200);
+        }
+
+        // Auto-slide setiap 5 detik
+        setInterval(showTestimonial, 5000);
+    </script>
+
+</body>
+</html>
