@@ -1,0 +1,81 @@
+  <!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partner & Legalitas</title>
+    <style>
+        .legalitas-container {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .legalitas-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: white; /* Warna putih untuk judul */
+            margin-bottom: 15px;
+        }
+
+        .legalitas-logos {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .legalitas-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .legalitas-item img {
+            width: 80px; /* Atur ukuran logo */
+            height: auto;
+        }
+
+        .legalitas-item p {
+            margin-top: 5px;
+            font-size: 14px;
+            font-weight: bold;
+            color: white; /* Warna putih untuk teks nama partner */
+        }
+
+        @media (max-width: 300px) {
+            .legalitas-logos {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="legalitas-container">
+        <div class="legalitas-logos">
+            <div class="legalitas-item">
+                <img src="https://images.glints.com/unsafe/1200x0/glints-dashboard.oss-ap-southeast-1.aliyuncs.com/company-logo/eec302e17e5796e6c8dcda9a60362ed8.png" alt="Partner 1">
+                <p>Noera</p>
+            </div>
+            <div class="legalitas-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRimWHbQiAzMRM8xkvOiJGsjshnYd0f6oyIVg&s" alt="Partner 2">
+                <p>Scarlett</p>
+            </div>
+            <div class="legalitas-item">
+                <img src="https://images.glints.com/unsafe/glints-dashboard.oss-ap-southeast-1.aliyuncs.com/company-logo/cf4e7db9722e70d27b136168e4477961.jpg" alt="Partner 3">
+                <p>Pratista</p>
+            </div>
+<div class="legalitas-item">
+                <img src="https://raniabeauty.co.id/wp-content/uploads/2023/03/logo-3-23.png" alt="Partner 4">
+                <p>Ovale</p>
+            </div>
+<div class="legalitas-item">
+                <img src="https://mms.img.susercontent.com/27891d2afaee72e96194de75fdbcf983" alt="Partner 5">
+                <p>Dorskin</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
