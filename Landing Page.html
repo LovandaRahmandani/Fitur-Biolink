@@ -1,0 +1,288 @@
+ <!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BioLink - Semua Link dalam Satu Tempat</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* General Reset */
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        #main-wrapper {
+            text-align: center;
+            padding: 30px 0;
+            align-items: center;
+        }
+
+        #content-box {
+            max-width: 100%;
+            margin: auto;
+            padding: 30px;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        /* Hero Section */
+        #hero-section {
+            position: relative;
+        }
+
+        #hero-image {
+            width: 250px;
+            border-radius: 15px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        #hero-image:hover {
+            transform: scale(1.05);
+        }
+
+        #hero-title {
+            font-size: 30px;
+            margin-top: 30px;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 0.5s forwards;
+        }
+
+        #hero-description {
+            margin-top: 30px;
+            font-size: 15px;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 0.7s forwards;
+            margin-bottom: 70px
+        }
+
+        /* Benefit Section */
+        #benefit-section {
+            margin: 30px 20px;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-in-out;
+        }
+
+        #benefit-title {
+            font-size: 25px;
+            margin-bottom: 0px;
+        }
+
+        #benefit-container {
+            list-style: none;
+            padding: 0;
+            align-items: center;
+            
+        }
+
+        .benefit-box {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-size: 15px;
+            margin: 30px 0;
+            padding: 20px;
+            border-radius: 10px;
+            background: #f9f9f9;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease-in-out;
+        }
+
+        .benefit-icon {
+            font-size: 40px;
+            color: #ff5a5f;
+        }
+
+        /* Social Proof */
+        #social-proof-section {
+            margin-top: 30px;
+            padding: 0px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-in-out;
+        }
+
+        #social-proof-title {
+            font-size: 25px;
+            margin-bottom: 20px;
+        }
+
+        #testimonial {
+            font-style: italic;
+            font-size: 14px;
+            opacity: 1;
+            transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+        }
+
+        /* CTA */
+        #cta-button {
+            margin-top: 40px;
+            width: 200px;
+            display: inline-block;
+            padding: 15px 25px;
+            background: #e0484d;
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 50px;
+            transition: 0.3s;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 1s forwards;
+        }
+
+        #cta-button:hover {
+            background: #e0484d;
+            transform: scale(1.1);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        #gambar{
+            margin-top: 100px;
+            align-items: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-in-out;
+        }
+        #gambar img {
+            width: 100%;
+            align-items: center;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="main-wrapper">
+        <div id="content-box">
+            <!-- Hero Section -->
+            <div id="hero-section">
+                <img id="hero-image" src="https://smartbio.link/uploads/logo/08ba5de0031f3c376ac661dc0f6d291a.png" alt="Hero Image">
+                <h1 id="hero-title">Semua Link Anda dalam Satu Tempat</h1>
+                <p id="hero-description">Profil Lebih Professional dan Kelola semua link penting Anda dengan mudah elegan. Menjadikan link pintar bisnis lancar</p>
+            </div>
+
+            <!-- Benefit Section -->
+            <div id="benefit-section">
+                <h3 id="benefit-title">Mengapa SmartbioLink?</h3>
+                <ul id="benefit-container">
+                    <li id="benefit-2" class="benefit-box"><i class="fas fa-eye-slash benefit-icon"></i>No Watermark</li>
+                    <li id="benefit-2" class="benefit-box"><i class="fas fa-code benefit-icon"></i>Custom HTML</li>
+                    <li id="benefit-3" class="benefit-box"><i class="fas fa-chart-line benefit-icon"></i>Analisis Statistik Real-Time</li>
+                    <li id="benefit-4" class="benefit-box"><i class="fas fa-lock benefit-icon"></i> Aman & Terpercaya</li>
+                    <li id="benefit-5" class="benefit-box"><i class="fas fa-gift benefit-icon"></i> Gratis Shortlink</li>
+                </ul>
+            </div>
+
+            <!-- Social Proof -->
+            <div id="social-proof-section">
+                <h2 id="social-proof-title">Digunakan Oleh Beberapa Influencer</h2>
+                <p id="testimonial">"Dulu saya kesulitan membagikan banyak link di Instagram, tapi dengan SmartBioLink, semuanya jadi lebih rapi dan mudah diakses. Engagement saya meningkat 2x lipat!" - <strong>Arum, Influencer</strong></p>
+            </div>
+
+            <!-- CTA -->
+            <a href="#" id="cta-button">Buat Link Gratis</a>
+
+            <div id="gambar">
+                <h3 id="benefit-title">Contoh Produk</h3>
+                <img src="https://i.ibb.co.com/vC3M8L18/Contoh-Biolink-Arum.png" alt="Contoh-Biolink-Arum" border="0"></a>
+                <p>🎯 <strong>Jaminan SmartBioLink Meningkatkan Klik & Konversi!</strong> Jika dalam <strong>30 hari pertama</strong> tidak puas, kami siap memberikan <strong>konsultasi GRATIS</strong> untuk optimasi halaman Anda!</p>            </div>
+                <a href="#" id="cta-button">Pesan Sekarang</a>
+        </div>
+        
+    </div>
+
+    
+
+    <script>
+        // Animasi scroll effect menggunakan Intersection Observer API
+        document.addEventListener("DOMContentLoaded", function() {
+            const elements = [
+                document.getElementById("benefit-section"),
+                document.getElementById("social-proof-section"),
+                document.getElementById("gambar"),
+                
+            ];
+            const testimonials = [
+            {
+                text: `"SmartBioLink benar-benar membantu saya meningkatkan engagement! Semua link penting kini lebih mudah diakses."`,
+                author: "Sarah, Influencer"
+            },
+            {
+                text: `"Sangat praktis! Konversi saya naik 35% setelah menggunakan SmartBioLink untuk bisnis online saya."`,
+                author: "Dika, Digital Marketer"
+            },
+            {
+                text: `"Sekarang pelanggan saya tidak bingung lagi mencari katalog. BioLink membuat tampilan lebih profesional!"`,
+                author: "Rina, Pemilik Online Shop"
+            },
+            {
+                text: `"Saya bisa menampilkan semua platform saya dalam satu halaman! Solusi simpel dan efisien untuk content creator."`,
+                author: "Anton, Content Creator"
+            }
+            ];
+            let index = 0;
+            const testimonialElement = document.getElementById("testimonial");
+
+            function updateTestimonial() {
+                // Fade out & geser ke bawah sedikit
+                testimonialElement.style.opacity = "0";
+                testimonialElement.style.transform = "translateY(10px)";
+
+                setTimeout(() => {
+                    // Ganti testimoni baru
+                    testimonialElement.innerHTML = `${testimonials[index].text} - <strong>${testimonials[index].author}</strong>`;
+
+                    // Fade in & kembali ke posisi semula
+                    testimonialElement.style.opacity = "1";
+                    testimonialElement.style.transform = "translateY(0)";
+
+                    // Pindah ke testimoni berikutnya
+                    index = (index + 1) % testimonials.length;
+                }, 900); // Tunggu animasi fade-out selesai dulu
+            }
+
+        // Jalankan setiap 6 detik
+        setInterval(updateTestimonial, 6000);
+
+        // Jalankan setiap 6 detik
+        setInterval(updateTestimonial, 6000);
+
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = "translateY(0)";
+                    }
+                });
+            }, { threshold: 0.3 });
+
+            elements.forEach(el => observer.observe(el));
+
+            // Animasi pada setiap list benefit
+            const benefitItems = document.querySelectorAll(".benefit-box");
+            benefitItems.forEach((item, index) => {
+                setTimeout(() => {
+                    item.style.opacity = 1;
+                    item.style.transform = "translateY(0)";
+                }, 500 + (index * 200));
+            });
+        });
+    </script>
+
+</body>
+</html>
