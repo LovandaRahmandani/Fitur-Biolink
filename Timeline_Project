@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Timeline Project Vertical</title>
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+    :root {
+            --primary-color: #3498db;
+            --secondary-color: #2980b9;
+            --light-bg: #f9f9f9;
+            --timeline-width: 4px;
+            --dot-size: 20px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+	#title {
+    	font-size: 2rem; /* atau ukuran yang Anda inginkan */
+    	font-weight: bold;
+	}
+
+        .timeline-container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: var(--timeline-width);
+            background: var(--primary-color);
+            z-index: 1;
+        }
+
+        .timeline-year {
+            position: relative;
+            margin: 60px 0;
+            width: 100%;
+            z-index: 2;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Tahun genap di kanan, ganjil di kiri */
+        .timeline-year:nth-child(odd) .year-content {
+            flex-direction: row;
+        }
+        
+        .timeline-year:nth-child(even) .year-content {
+            flex-direction: row-reverse;
+        }
+
+        .year-label {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: -15px;
+            background: var(--primary-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+            z-index: 3;
+        }
+
+        .year-content {
+            display: flex;
+            width: 100%;
+            position: relative;
+            margin-top: 20px;
+        }
+
+        .timeline-card {
+            width: calc(50% - 40px);
+            padding: 25px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .timeline-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .timeline-card::before {
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            top: 25px;
+            background: white;
+            transform: rotate(45deg);
+            z-index: -1;
+        }
+
+        /* Penyesuaian arrow card berdasarkan posisi */
+        .timeline-year:nth-child(odd) .timeline-card::before {
+            right: -7px;
+            box-shadow: 3px -3px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .timeline-year:nth-child(even) .timeline-card::before {
+            left: -7px;
+            box-shadow: -3px 3px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .card-title {
+		font-size: 1.3rem;
+		margin-top:20px;
+            	margin-bottom: 10px;
+            	color: var(--primary-color);
+            	font-weight: 600;
+        }
+
+        .card-date {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .card-date i {
+            margin-right: 5px;
+        }
+
+        .card-description {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .tag {
+            background: var(--light-bg);
+            color: var(--primary-color);
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        /* Dot timeline */
+        .timeline-year::after {
+            content: '';
+            position: absolute;
+            width: var(--dot-size);
+            height: var(--dot-size);
+            border-radius: 50%;
+            background: var(--secondary-color);
+            left: 50%;
+            transform: translateX(-50%);
+            top: -10px;
+            border: 4px solid white;
+            box-shadow: 0 0 0 2px var(--secondary-color);
+            z-index: 2;
+        }
+
+        @media (max-width: 768px) {
+            .timeline-container::before {
+                left: 30px;
+            }
+
+            .timeline-year::after {
+                left: 30px;
+            }
+
+            .year-label {
+                left: 30px;
+                transform: none;
+            }
+
+            .year-content {
+                flex-direction: column !important;
+            }
+
+            .timeline-card {
+                width: calc(100% - 60px);
+                margin-left: 60px !important;
+                margin-bottom: 20px;
+            }
+
+            .timeline-card::before {
+                left: -7px !important;
+                right: auto !important;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .timeline-card {
+            opacity: 0;
+            animation: fadeIn 0.6s forwards;
+        }
+
+        /* Different delays for animation */
+        .timeline-year:nth-child(odd) .timeline-card {
+            animation-delay: 0.2s;
+        }
+
+        .timeline-year:nth-child(even) .timeline-card {
+            animation-delay: 0.4s;
+        }
+</style>
+
+<div class="timeline-container">
+    <!-- 2024 - Ganjil (kiri) -->
+    <div class="timeline-year">
+        <div class="year-label">2025</div>
+        <div class="year-content">
+            <div class="timeline-card">
+                <h3 class="card-title">TOEFL Certificate</h3>
+                <div class="card-date">
+                    <i>📅</i> February 2025
+                </div>
+                <p class="card-description">
+                    Lulus sertifikat TOEFL dari universitas dengan skor 500, menunjukkan kemampuan dasar bahasa Inggris dalam membaca, mendengarkan, dan memahami teks akademik.
+                </p>
+                <div class="card-tags">
+                    <span class="tag">TOEFL</span>
+                    <span class="tag">University</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2022 - Genap (kanan) -->
+    <div class="timeline-year">
+        <div class="year-label">2024</div>
+        <div class="year-content">
+            <div class="timeline-card">
+                <h3 class="card-title">Bachelor Degree</h3>
+                <div class="card-date">
+                    <i>📅</i> June 2020 - December 2024
+                </div>
+                <p class="card-description">
+                    Lulus sebagai Sarjana Ilmu Komputer bidang Informatika, dengan keahlian di pemrograman, AI, dan pengembangan teknologi digital.
+                </p>
+                <div class="card-tags">
+                    <span class="tag">Computer Science</span>
+                    <span class="tag">Bachelor Degree</span>
+                </div>
+		<h3 class="card-title">Website Redesign</h3>
+                <div class="card-date">
+                    <i>📅</i> January - April 2023
+                </div>
+                <p class="card-description">
+                    Complete overhaul of company website with modern design, improved accessibility, and 40% faster load times.
+                </p>
+                <div class="card-tags">
+                    <span class="tag">Web Design</span>
+                    <span class="tag">UX/UI</span>
+                    <span class="tag">Performance</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2021 - Ganjil (kiri) -->
+    <div class="timeline-year" id="year-2021">
+        <div class="year-label">2021</div>
+        <div class="year-content">
+            <div class="timeline-card">
+                <h3 class="card-title">E-commerce Platform</h3>
+                <div class="card-date">
+                    <i>📅</i> June - December 2021
+                </div>
+                <p class="card-description">
+                    Built custom e-commerce solution that increased sales by 120% year-over-year.
+                </p>
+                <div class="card-tags">
+                    <span class="tag">E-commerce</span>
+                    <span class="tag">Payment Gateway</span>
+                    <span class="tag">Scalability</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2020 - Genap (kanan) -->
+    <div class="timeline-year" id="year-2020">
+        <div class="year-label">2020</div>
+        <div class="year-content">
+            <div class="timeline-card">
+                <h3 class="card-title">Data Analytics Dashboard</h3>
+                <div class="card-date">
+                    <i>📅</i> February - October 2020
+                </div>
+                <p class="card-description">
+                    Created interactive data visualization tools that helped reduce decision-making time by 35%.
+                </p>
+                <div class="card-tags">
+                    <span class="tag">Data Visualization</span>
+                    <span class="tag">Business Intelligence</span>
+                    <span class="tag">D3.js</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
