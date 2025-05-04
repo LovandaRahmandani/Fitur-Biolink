@@ -1,0 +1,134 @@
+  <!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pembayaran E-Wallet & QRIS</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .payment-container {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .btn-qris {
+            background: #ff9800;
+        }
+
+        .btn-ovo {
+            background: #6d1ed4;
+        }
+
+        .btn-gopay {
+            background: #0080ff;
+        }
+
+        .btn-dana {
+            background: #0b75c9;
+        }
+
+        .btn-shopeepay {
+            background: #ff5722;
+        }
+
+        /* Popup */
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        .popup-box {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #fff;
+            padding: 20px;
+            width: 90%;
+            max-width: 350px;
+            text-align: center;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            z-index: 1000;
+        }
+
+        .popup-box img {
+            width: 200px;
+            margin-top: 10px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="payment-container">
+        <button class="btn btn-qris" onclick="showPopup('qris')">Bayar dengan QRIS</button>
+        <button class="btn btn-ovo" onclick="redirectTo('https://www.ovo.id/payment')">Bayar dengan OVO</button>
+        <button class="btn btn-gopay" onclick="redirectTo('https://gopay.co.id/payment')">Bayar dengan GoPay</button>
+        <button class="btn btn-dana" onclick="redirectTo('https://dana.id/payment')">Bayar dengan DANA</button>
+        <button class="btn btn-shopeepay" onclick="redirectTo('https://shopee.co.id/shopeepay')">Bayar dengan ShopeePay</button>
+    </div>
+
+    <!-- Popup QRIS -->
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup-box">
+            <span class="close-btn" onclick="closePopup()">×</span>
+            <h3>Scan QRIS untuk Pembayaran</h3>
+            <img src="https://via.placeholder.com/200" alt="QRIS Code">
+            <p>Buka aplikasi e-Wallet Anda dan scan QRIS ini.</p>
+        </div>
+    </div>
+
+    <script>
+        function showPopup(type) {
+            if (type === 'qris') {
+                document.getElementById("popupOverlay").style.display = "block";
+            }
+        }
+
+        function closePopup() {
+            document.getElementById("popupOverlay").style.display = "none";
+        }
+
+        function redirectTo(url) {
+            window.location.href = url;
+        }
+    </script>
+
+</body>
+</html>
